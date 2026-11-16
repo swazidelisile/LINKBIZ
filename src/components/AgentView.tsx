@@ -46,7 +46,7 @@ export function AgentView({ companyName }: { companyName: string }) {
 
   return (
     <div className="space-y-3">
-      <div className="card p-5 bg-gradient-to-r from-tint to-white">
+      <div className="card p-5 bg-gradient-to-br from-tint via-white/60 to-white/30 spectrum-border">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
             <h1 className="text-xl font-semibold text-ink flex items-center gap-2"><Sparkles className="text-action" size={22} /> Your Autonomous Deal-Matching Agent</h1>
@@ -71,7 +71,7 @@ export function AgentView({ companyName }: { companyName: string }) {
           <div key={m.id} className="card p-4">
             <div className="flex items-start gap-3">
               <div className="relative shrink-0">
-                <div className={`h-12 w-12 rounded-full flex items-center justify-center font-bold text-sm ${m.score >= 75 ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : m.score >= 60 ? "bg-tint text-action border border-orange-200" : "bg-hover text-muted border border-line"}`}>{m.score}</div>
+                <div className={`h-12 w-12 rounded-full flex items-center justify-center font-bold text-sm ${m.score >= 75 ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : m.score >= 60 ? "bg-tint text-action border border-action/20" : "bg-hover text-muted border border-line"}`}>{m.score}</div>
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 text-xs text-muted flex-wrap">
@@ -97,12 +97,12 @@ export function AgentView({ companyName }: { companyName: string }) {
               </div>
             </div>
             {open && m.outline && (
-              <pre className="mt-3 rounded-md border border-line bg-hover/60 p-3 text-xs text-ink whitespace-pre-wrap font-sans max-h-96 overflow-y-auto">{m.outline}</pre>
+              <pre className="mt-3 rounded-xl border border-line bg-hover/60 p-3 text-xs text-ink whitespace-pre-wrap font-sans max-h-96 overflow-y-auto">{m.outline}</pre>
             )}
             {open && (
               <details className="mt-2 text-xs text-muted">
                 <summary className="cursor-pointer font-semibold text-action">View the auto-written pitch</summary>
-                <pre className="mt-1 whitespace-pre-wrap font-sans rounded-md border border-line p-3 bg-white">{m.pitch}</pre>
+                <pre className="mt-1 whitespace-pre-wrap font-sans rounded-xl border border-line p-3 bg-white">{m.pitch}</pre>
               </details>
             )}
           </div>

@@ -12,7 +12,7 @@ export function Countdown({ deadline }: { deadline: string }) {
   return (
     <div className={`grid grid-cols-4 gap-1 text-center ${urgent ? "text-red-600" : "text-action"}`}>
       {[[d, "days"], [h, "hrs"], [m, "min"], [s, "sec"]].map(([v, l]) => (
-        <div key={l} className="rounded-md bg-hover border border-line py-1.5"><div className="text-xl font-semibold tabular-nums">{String(v).padStart(2, "0")}</div><div className="text-[10px] uppercase text-muted">{l}</div></div>
+        <div key={l} className="rounded-xl bg-hover border border-line py-1.5"><div className="text-xl font-semibold tabular-nums">{String(v).padStart(2, "0")}</div><div className="text-[10px] uppercase text-muted">{l}</div></div>
       ))}
     </div>
   );

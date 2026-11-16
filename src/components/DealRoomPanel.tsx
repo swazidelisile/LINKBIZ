@@ -72,7 +72,7 @@ export function DealRoomPanel({ conversationId, me, otherName, onChanged }: { co
       </div>
 
       {/* NDA */}
-      <section className="rounded-md border border-line p-3">
+      <section className="rounded-xl border border-line p-3">
         <div className="flex items-center justify-between">
           <div className="text-sm font-semibold flex items-center gap-1.5"><PenLine size={14} className="text-action" /> Mutual NDA</div>
           <span className={`text-xs font-semibold ${room.ndaStatus === "signed" ? "text-emerald-700" : room.ndaStatus === "sent" ? "text-amber-600" : "text-muted"}`}>
@@ -88,7 +88,7 @@ export function DealRoomPanel({ conversationId, me, otherName, onChanged }: { co
       </section>
 
       {/* Documents */}
-      <section className="rounded-md border border-line p-3">
+      <section className="rounded-xl border border-line p-3">
         <div className="flex items-center justify-between">
           <div className="text-sm font-semibold flex items-center gap-1.5"><FileText size={14} className="text-action" /> Shared folder</div>
           <button onClick={uploadDoc} className="text-xs font-semibold text-action inline-flex items-center gap-1 hover:underline"><Upload size={12} /> Upload</button>
@@ -106,7 +106,7 @@ export function DealRoomPanel({ conversationId, me, otherName, onChanged }: { co
       </section>
 
       {/* Milestones */}
-      <section className="rounded-md border border-line p-3">
+      <section className="rounded-xl border border-line p-3">
         <div className="flex items-center justify-between">
           <div className="text-sm font-semibold">Milestones</div>
           <span className="text-xs text-muted">${totalValue.toLocaleString()} total</span>
@@ -137,7 +137,7 @@ export function DealRoomPanel({ conversationId, me, otherName, onChanged }: { co
       </section>
 
       {/* Escrow */}
-      <section className="rounded-md border border-line p-3">
+      <section className="rounded-xl border border-line p-3">
         <div className="flex items-center justify-between">
           <div className="text-sm font-semibold flex items-center gap-1.5"><Landmark size={14} className="text-action" /> Invoice Escrow</div>
           <span className={`text-xs font-semibold ${room.escrowStatus === "released" ? "text-emerald-700" : room.escrowStatus === "funded" ? "text-action" : "text-muted"}`}>
@@ -170,7 +170,7 @@ export function DealRoomPanel({ conversationId, me, otherName, onChanged }: { co
 
 function CopilotView({ c }: { c: Copilot }) {
   return (
-    <div className="rounded-md border border-orange-200 bg-tint p-3 space-y-2">
+    <div className="rounded-xl border border-action/15 bg-tint p-3 space-y-2">
       <div className="text-xs font-bold uppercase tracking-wide text-action flex items-center gap-1"><Sparkles size={12} /> Copilot analysis</div>
       <ul className="space-y-1.5">
         {c.flags.map((f, i) => (

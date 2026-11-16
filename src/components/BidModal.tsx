@@ -53,7 +53,7 @@ export function BidModal({ tender, loggedIn, isOwner, alreadyBid, companyName }:
   }
 
   if (isOwner) {
-    return <div className="rounded-md bg-hover border p-3 text-sm text-muted">You issued this tender. Bids and inquiries appear in your <Link href="/messages" className="text-action font-semibold hover:underline">Deal Room</Link>.</div>;
+    return <div className="rounded-xl bg-hover border p-3 text-sm text-muted">You issued this tender. Bids and inquiries appear in your <Link href="/messages" className="text-action font-semibold hover:underline">Deal Room</Link>.</div>;
   }
 
   return (
@@ -78,10 +78,10 @@ export function BidModal({ tender, loggedIn, isOwner, alreadyBid, companyName }:
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="rounded-md bg-hover border p-3 text-sm"><span className="text-muted">Submitting to</span> <b>{tender.company.name}</b> <span className="text-muted">for</span> <b>{tender.title}</b></div>
+            <div className="rounded-xl bg-hover border p-3 text-sm"><span className="text-muted">Submitting to</span> <b>{tender.company.name}</b> <span className="text-muted">for</span> <b>{tender.title}</b></div>
             <div className="grid grid-cols-2 gap-2">
               {([["bid", "Full Bid / Proposal"], ["eoi", "Expression of Interest"]] as const).map(([k, v]) => (
-                <button key={k} onClick={() => setType(k)} className={`rounded-md border p-3 text-sm font-semibold text-left ${type === k ? "border-action bg-tint text-action" : "border-line text-ink-70"}`}>{v}</button>
+                <button key={k} onClick={() => setType(k)} className={`rounded-xl border p-3 text-sm font-semibold text-left ${type === k ? "border-action bg-tint text-action" : "border-line text-ink-70"}`}>{v}</button>
               ))}
             </div>
             {type === "bid" && (
@@ -92,9 +92,9 @@ export function BidModal({ tender, loggedIn, isOwner, alreadyBid, companyName }:
             <div>
               <label className="label">Attach to submission</label>
               <div className="space-y-2">
-                <label className="flex items-center gap-3 rounded-md border p-3 text-sm cursor-pointer hover:bg-hover"><input type="checkbox" checked={includeProfile} onChange={(e) => setIncludeProfile(e.target.checked)} className="accent-action" /><Building2 size={18} className="text-muted" /><div><b>Company Profile</b><div className="text-xs text-muted">Registration, certifications, executives</div></div></label>
-                <label className="flex items-center gap-3 rounded-md border p-3 text-sm cursor-pointer hover:bg-hover"><input type="checkbox" checked={includePortfolio} onChange={(e) => setIncludePortfolio(e.target.checked)} className="accent-action" /><Award size={18} className="text-muted" /><div><b>Achievements & Portfolio</b><div className="text-xs text-muted">Completed projects, awards, case studies</div></div></label>
-                <div className="rounded-md border border-dashed p-3">
+                <label className="flex items-center gap-3 rounded-xl border p-3 text-sm cursor-pointer hover:bg-hover"><input type="checkbox" checked={includeProfile} onChange={(e) => setIncludeProfile(e.target.checked)} className="accent-action" /><Building2 size={18} className="text-muted" /><div><b>Company Profile</b><div className="text-xs text-muted">Registration, certifications, executives</div></div></label>
+                <label className="flex items-center gap-3 rounded-xl border p-3 text-sm cursor-pointer hover:bg-hover"><input type="checkbox" checked={includePortfolio} onChange={(e) => setIncludePortfolio(e.target.checked)} className="accent-action" /><Award size={18} className="text-muted" /><div><b>Achievements & Portfolio</b><div className="text-xs text-muted">Completed projects, awards, case studies</div></div></label>
+                <div className="rounded-xl border border-dashed p-3">
                   <div className="flex items-center justify-between"><div className="text-sm flex items-center gap-2"><FileText size={18} className="text-muted" /><b>Proposal PDF</b></div><button onClick={addFiles} className="btn-ghost !py-1 !text-xs"><Upload size={12} /> Upload</button></div>
                   {files.length > 0 && <div className="flex flex-wrap gap-2 mt-2">{files.map((f) => <span key={f} className="chip gap-1">{f} <button onClick={() => setFiles((p) => p.filter((x) => x !== f))}><X size={12} /></button></span>)}</div>}
                 </div>

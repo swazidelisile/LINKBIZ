@@ -50,7 +50,7 @@ export function TeamManager({ members, isAdmin, myUserId }: { members: Member[];
         <div className="mt-5 border-t border-line pt-4">
           <h3 className="font-semibold text-sm">Roles explained</h3>
           <div className="mt-2 grid sm:grid-cols-3 gap-2">
-            {ROLE_INFO.map((r) => <div key={r.key} className="rounded-md bg-hover p-3"><div className="flex items-center gap-1.5 font-semibold text-sm"><r.icon size={14} className="text-action" /> {ROLE_LABELS[r.key]}</div><p className="text-xs text-muted mt-1">{r.desc}</p></div>)}
+            {ROLE_INFO.map((r) => <div key={r.key} className="rounded-xl bg-hover p-3"><div className="flex items-center gap-1.5 font-semibold text-sm"><r.icon size={14} className="text-action" /> {ROLE_LABELS[r.key]}</div><p className="text-xs text-muted mt-1">{r.desc}</p></div>)}
           </div>
         </div>
       </div>

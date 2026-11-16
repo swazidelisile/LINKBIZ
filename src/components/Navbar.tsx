@@ -33,10 +33,10 @@ const MORE = [
 
 function NavTab({ href, label, icon: Icon, active }: { href: string; label: string; icon: typeof Home; active: boolean }) {
   return (
-    <Link href={href} className={`relative flex flex-col items-center justify-center w-[76px] h-[52px] text-xs transition-colors ${active ? "text-ink" : "text-muted hover:text-ink"}`}>
+    <Link href={href} className={`relative flex flex-col items-center justify-center w-[76px] h-[52px] text-xs transition-colors duration-200 ${active ? "text-ink" : "text-muted hover:text-ink"}`}>
       <Icon size={24} strokeWidth={active ? 2.25 : 1.75} />
-      <span className="mt-0.5 leading-none hidden lg:block">{label}</span>
-      {active && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-ink" />}
+      <span className={`mt-0.5 leading-none hidden lg:block ${active ? "font-semibold" : ""}`}>{label}</span>
+      {active && <span className="nav-active-bar" />}
     </Link>
   );
 }
@@ -78,10 +78,10 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white border-b border-line">
+      <header className="sticky top-0 z-40 nav-glass">
         <div className="mx-auto max-w-[1128px] px-4 lg:px-6 h-[52px] flex items-center">
           <Link href="/" aria-label="LinkBiz home" className="shrink-0 mr-2">
-            <div className="h-[34px] w-[34px] rounded-[4px] bg-action text-white flex items-center justify-center font-extrabold text-xl leading-none tracking-tight">lb</div>
+            <div className="h-[34px] w-[34px] rounded-[11px] brand-tile flex items-center justify-center font-extrabold text-[19px] leading-none tracking-tight">lb</div>
           </Link>
           <form
             onSubmit={(e) => { e.preventDefault(); router.push(`/tenders?q=${encodeURIComponent(q)}`); }}
@@ -89,13 +89,13 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
           >
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-70 pointer-events-none" />
             <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder="Search"
-              className="w-full h-[34px] rounded-[4px] bg-search pl-10 pr-3 text-sm text-ink placeholder:text-ink-70 focus:outline-none focus:ring-1 focus:ring-ink/80 focus:bg-white transition-colors" />
+              className="w-full h-[36px] rounded-full bg-search pl-10 pr-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:bg-white/90 focus:ring-4 focus:ring-action/15 focus:border focus:border-action/40 transition-all duration-200" />
           </form>
 
           <nav className="hidden md:flex items-center ml-auto">
             {NAV.map((n) => <NavTab key={n.href} {...n} active={isActive(n.href)} />)}
             <Link href="/intelligence" className="relative flex flex-col items-center justify-center w-[76px] h-[52px] text-xs text-muted hover:text-ink">
-              <span className="relative"><Bell size={24} strokeWidth={1.75} /><span className="absolute -top-1 -right-2 bg-action text-white text-[10px] font-bold rounded-full min-w-4 h-4 px-1 flex items-center justify-center">5</span></span>
+              <span className="relative"><Bell size={24} strokeWidth={1.75} /><span className="absolute -top-1 -right-2 badge-spectrum text-[10px] font-bold rounded-full min-w-4 h-4 px-1 flex items-center justify-center">5</span></span>
               <span className="mt-0.5 leading-none hidden lg:block">Alerts</span>
             </Link>
           </nav>
@@ -114,7 +114,7 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
             )}
 
             {open && session && (
-              <div className="absolute right-0 top-[52px] w-[288px] card shadow-[0_4px_12px_rgba(0,0,0,0.15)] rounded-t-none p-0 overflow-hidden">
+              <div className="absolute right-0 top-[52px] w-[288px] card !rounded-t-none p-0 overflow-hidden shadow-[0_24px_48px_-20px_rgba(28,28,62,0.35)]">
                 <div className="p-3">
                   <div className="flex gap-2 items-start">
                     <Avatar name={session.company.name} src={session.company.logoUrl} size={56} />
@@ -156,10 +156,10 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
               <button onClick={() => setMore((m) => !m)} className={`flex flex-col items-center justify-center w-[80px] h-[52px] text-xs ${moreActive ? "text-ink" : "text-muted hover:text-ink"}`}>
                 <Grid3X3 size={24} strokeWidth={1.75} />
                 <span className="flex items-center gap-0.5 mt-0.5 leading-none">More <ChevronDown size={14} /></span>
-                {moreActive && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-ink" />}
+                {moreActive && <span className="nav-active-bar" />}
               </button>
               {more && (
-                <div className="absolute right-0 top-[52px] w-[280px] card shadow-[0_4px_12px_rgba(0,0,0,0.15)] rounded-t-none py-1">
+                <div className="absolute right-0 top-[52px] w-[280px] card !rounded-t-none py-1 shadow-[0_24px_48px_-20px_rgba(28,28,62,0.35)]">
                   {MORE.map((m) => (
                     <Link key={m.href} href={m.href} className="flex items-center gap-3 px-3 py-2 row-hover">
                       <m.icon size={18} className="text-action shrink-0" />
@@ -174,12 +174,12 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
       </header>
 
       {/* Mobile bottom tab bar */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-line flex">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 nav-glass flex" style={{ borderTop: "1px solid rgba(0,0,0,0.07)", borderBottom: "none" }}>
         {NAV.slice(0, 4).map(({ href, label, icon: Icon }) => {
           const active = isActive(href);
           return (
             <Link key={href} href={href} className={`relative flex-1 flex flex-col items-center justify-center h-[52px] text-[10px] ${active ? "text-ink" : "text-muted"}`}>
-              {active && <span className="absolute top-0 left-3 right-3 h-0.5 bg-ink" />}
+              {active && <span className="nav-active-bar" style={{ top: 0, bottom: "auto" }} />}
               <Icon size={22} strokeWidth={active ? 2.25 : 1.75} />
               <span className="mt-0.5 leading-none">{label.replace("My ", "")}</span>
             </Link>
@@ -192,7 +192,7 @@ export function Navbar({ session, companies }: { session: NavSession; companies:
       </nav>
       {sheet && (
         <div className="md:hidden fixed inset-0 z-50 bg-black/40" onClick={() => setSheet(false)}>
-          <div className="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl p-4 pb-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute bottom-0 inset-x-0 bg-white/85 backdrop-blur-2xl border-t border-white/70 rounded-t-3xl p-4 pb-8 shadow-[0_-20px_60px_-20px_rgba(28,28,62,0.35)]" onClick={(e) => e.stopPropagation()}>
             <div className="mx-auto h-1 w-10 rounded-full bg-line mb-3" />
             <Link href="/agent" className="flex items-center gap-3 px-2 py-2.5 row-hover rounded"><Sparkles size={20} className="text-action" /><div><div className="font-semibold text-sm">AI Agent</div><div className="text-xs text-muted">Warm matches & proposal drafts</div></div></Link>
             {MORE.map((m) => (

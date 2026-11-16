@@ -39,7 +39,7 @@ export function TrustCard({ company, isOwner }: { company: Trust; isOwner: boole
     <div className="card p-4">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-base text-ink">Trust & Due Diligence</h3>
-        <span className="inline-flex items-center gap-1 rounded-md border border-line bg-hover px-2 py-0.5 text-xs font-bold text-ink"><Gauge size={12} className="text-action" /> Credit {company.creditTier}</span>
+        <span className="inline-flex items-center gap-1 rounded-xl border border-line bg-hover px-2 py-0.5 text-xs font-bold text-ink"><Gauge size={12} className="text-action" /> Credit {company.creditTier}</span>
       </div>
       <ul className="mt-2.5 space-y-1.5">
         {badges.map((b) => (

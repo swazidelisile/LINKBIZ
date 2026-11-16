@@ -105,7 +105,7 @@ export function Messenger({ initial, me, initialActive }: { initial: Conv[]; me:
                 const mine = m.senderCompanyId === me;
                 return (
                   <div key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm ${mine ? "bg-action text-white rounded-br-sm" : "bg-white border rounded-bl-sm"}`}>
+                    <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm ${mine ? "btn-message-me text-white rounded-br-md" : "bg-white/85 border border-line rounded-bl-md"}`}>
                       <p className="whitespace-pre-line leading-relaxed">{m.content}</p>
                       {m.attachment && (
                         <div className={`mt-2 flex items-center gap-2 rounded-lg px-2.5 py-2 ${mine ? "bg-white/15" : "bg-hover"}`}>

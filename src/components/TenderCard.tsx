@@ -15,7 +15,7 @@ export function TenderCard({ tender, compact = false }: { tender: TenderWithComp
   const left = daysLeft(tender.deadline);
   const urgent = left <= 10;
   return (
-    <Link href={`/tenders/${tender.id}`} className="card block p-4 hover:bg-black/[0.02] transition-colors">
+    <Link href={`/tenders/${tender.id}`} className="card block p-4 hover:bg-white/75 transition-colors">
       <div className="flex items-start gap-3">
         <Avatar name={tender.company.name} src={tender.company.logoUrl} size={compact ? 40 : 48} />
         <div className="min-w-0 flex-1">

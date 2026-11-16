@@ -57,10 +57,10 @@ export default function SignupPage() {
   return (
     <div className="w-full max-w-5xl grid md:grid-cols-[1fr_400px] gap-8 items-start">
       <div className="hidden md:block pt-6">
-        <h1 className="text-4xl font-light text-ink leading-tight">Buyers are already waiting.<br /><span className="text-action font-normal">Register and bid today.</span></h1>
+        <h1 className="text-[44px] font-semibold text-ink leading-[1.08] tracking-[-0.03em]">Buyers are already waiting.<br /><span className="gradient-text">Register and bid today.</span></h1>
 
         {/* Reverse lead-gen: live anonymised demand */}
-        <div className="card p-4 mt-6">
+        <div className="card p-4 mt-6 spectrum-border">
           <div className="text-xs font-bold uppercase tracking-wide text-action flex items-center gap-1"><TrendingUp size={12} /> Live demand on LinkBiz right now</div>
           <ul className="mt-2 space-y-2">
             {demand.slice(0, 4).map((d, i) => (
@@ -83,14 +83,14 @@ export default function SignupPage() {
 
       <form onSubmit={submit} className="card p-6 space-y-3">
         <div>
-          <h2 className="text-xl font-semibold">Register your company</h2>
-          <div className="flex gap-1 mt-2">{[0, 1, 2].map((s) => <div key={s} className={`h-1 flex-1 rounded ${step >= s ? "bg-action" : "bg-hover"}`} />)}</div>
+          <h2 className="text-2xl font-semibold tracking-[-0.02em]">Register your company</h2>
+          <div className="flex gap-1 mt-2">{[0, 1, 2].map((s) => <div key={s} className={`h-1 flex-1 rounded ${step >= s ? "meter-spectrum" : "bg-hover"}`} />)}</div>
           <p className="text-xs text-muted mt-1">{step === 0 ? "Instant start - let AI build your page" : step === 1 ? "Step 1 of 2 - Company details" : "Step 2 of 2 - Admin account"}</p>
         </div>
 
         {step === 0 && (
           <>
-            <div className="rounded-md border border-orange-200 bg-tint p-3">
+            <div className="rounded-xl border border-action/15 bg-tint p-3">
               <div className="text-sm font-semibold flex items-center gap-1.5"><Sparkles size={14} className="text-action" /> Zero-effort profile builder</div>
               <p className="text-xs text-muted mt-1">Skip the long forms. AI drafts your page from any one of these:</p>
             </div>
@@ -101,7 +101,7 @@ export default function SignupPage() {
                 <button type="button" onClick={() => build("url")} disabled={buildBusy} className="btn-primary shrink-0 !px-3">{buildBusy ? "..." : "Build"}</button>
               </div>
             </div>
-            <button type="button" onClick={() => build("pdf")} disabled={buildBusy} className="w-full rounded-md border border-dashed border-stone-400 p-3 text-sm text-muted row-hover flex items-center justify-center gap-2"><Upload size={16} /> Upload company profile PDF</button>
+            <button type="button" onClick={() => build("pdf")} disabled={buildBusy} className="w-full rounded-xl border border-dashed border-action/25 bg-white/50 p-3 text-sm text-muted row-hover flex items-center justify-center gap-2"><Upload size={16} /> Upload company profile PDF</button>
             <div>
               <label className="label flex items-center gap-1"><Hash size={12} /> Or business registration number</label>
               <div className="flex gap-2">
@@ -110,13 +110,13 @@ export default function SignupPage() {
               </div>
             </div>
             {error && <p className="text-sm text-red-600">{error}</p>}
-            <button type="button" onClick={() => setStep(1)} className="w-full text-center text-sm font-semibold text-muted py-2 row-hover rounded-md">Fill manually instead <ArrowRight size={13} className="inline" /></button>
+            <button type="button" onClick={() => setStep(1)} className="w-full text-center text-sm font-semibold text-muted py-2 row-hover rounded-xl">Fill manually instead <ArrowRight size={13} className="inline" /></button>
           </>
         )}
 
         {step === 1 && (
           <>
-            {built && <div className="rounded-md bg-emerald-50 border border-emerald-200 p-2.5 text-xs text-emerald-800 flex items-center gap-1.5"><Sparkles size={13} /> AI drafted your page ({built.confidence}% confidence) - {built.services.length} services pre-built. Review below.</div>}
+            {built && <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-2.5 text-xs text-emerald-800 flex items-center gap-1.5"><Sparkles size={13} /> AI drafted your page ({built.confidence}% confidence) - {built.services.length} services pre-built. Review below.</div>}
             <div><label className="label">Company name *</label><input className="input" value={f.companyName} onChange={set("companyName")} required /></div>
             <div><label className="label">Registration / Tax ID *</label><input className="input" value={f.registrationId} onChange={set("registrationId")} placeholder="e.g. 2015/123456/07 or EIN" required /></div>
             <div className="grid grid-cols-2 gap-3">
@@ -145,7 +145,7 @@ export default function SignupPage() {
             <button className="btn-primary flex-1 !py-2.5" disabled={busy}>{busy ? "Creating..." : step === 1 ? "Continue" : "Create page & run free audit"}</button>
           </div>
         )}
-        <p className="text-xs text-center text-muted">Already on LinkBiz? <Link href="/login" className="text-action font-semibold hover:underline">Sign in</Link></p>
+        <p className="text-xs text-center text-muted">Already on LinkBiz? <Link href="/login" className="font-semibold text-action hover:underline">Sign in</Link></p>
       </form>
     </div>
   );

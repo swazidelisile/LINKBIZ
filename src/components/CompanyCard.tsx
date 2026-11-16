@@ -42,7 +42,7 @@ export function CompanyCard({ company, variant = "full", loggedIn = true, follow
 
   return (
     <div className="card overflow-hidden flex flex-col">
-      <div className="h-14 bg-gradient-to-r from-action to-brand-light" />
+      <div className="h-16 cover-gradient" />
       <div className="px-4 pb-4 -mt-7 flex flex-col flex-1">
         <Link href={`/company/${company.slug}`}><Avatar name={company.name} src={company.logoUrl} size={64} ring /></Link>
         <Link href={`/company/${company.slug}`} className="mt-2 font-semibold text-base text-ink hover:underline flex items-center gap-1">{company.name} {company.verified && <VerifiedBadge size={14} />}</Link>
