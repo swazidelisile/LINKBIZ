@@ -109,7 +109,7 @@ export function CreatePostBox({ session, canPost, canTender }: { session: NonNul
         {attachments.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">{attachments.map((a) => <span key={a} className="chip gap-1"><Paperclip size={12} /> {a} <button onClick={() => setAttachments((p) => p.filter((x) => x !== a))}><X size={12} /></button></span>)}</div>
         )}
-        <div className="mt-3 rounded-md border border-line bg-hover/60 p-2.5">
+        <div className="mt-3 rounded-xl border border-line bg-hover/60 p-2.5">
           <div className="text-xs font-semibold text-ink flex items-center gap-1.5"><Repeat size={13} className="text-action" /> Multi-channel sync - post once, publish everywhere</div>
           <div className="mt-1.5 flex flex-wrap gap-3">
             {["LinkedIn", "Facebook", "Google Business"].map((ch) => (

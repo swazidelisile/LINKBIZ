@@ -37,12 +37,12 @@ export default async function CompanyPage({ params, searchParams }: { params: Pr
   return (
     <div className="space-y-3 sm:px-0">
       <div className="card overflow-hidden">
-        <div className="h-36 sm:h-52 bg-cover bg-center bg-brand" style={{ backgroundImage: `url(${c.coverUrl ?? "/covers/default.jpg"})` }} />
+        <div className={`h-36 sm:h-52 bg-cover bg-center ${c.coverUrl ? "" : "cover-gradient"}`} style={c.coverUrl ? { backgroundImage: `url(${c.coverUrl})` } : undefined} />
         <div className="px-5 pb-4">
           <div className="flex flex-col sm:flex-row sm:items-end gap-4 -mt-12 sm:-mt-14">
-            <Avatar name={c.name} src={c.logoUrl} size={120} rounded="rounded-lg" className="border-4 !border-white bg-white !w-24 !h-24 sm:!w-[120px] sm:!h-[120px]" />
+            <div className="rounded-[26px] bg-white/85 p-1.5 shadow-[0_18px_40px_-20px_rgba(28,28,62,0.55)] backdrop-blur-xl"><Avatar name={c.name} src={c.logoUrl} size={120} rounded="rounded-[20px]" className="!w-24 !h-24 sm:!w-[112px] sm:!h-[112px]" /></div>
             <div className="flex-1 min-w-0 sm:pb-1">
-              <h1 className="text-xl sm:text-2xl font-semibold text-ink flex items-center gap-2 flex-wrap">{c.name} {c.verified && <VerifiedBadge size={20} label />}</h1>
+              <h1 className="text-2xl sm:text-[32px] font-semibold tracking-[-0.03em] leading-tight text-ink flex items-center gap-2 flex-wrap">{c.name} {c.verified && <VerifiedBadge size={20} label />}</h1>
               <p className="text-ink-70 text-sm mt-0.5">{c.tagline}</p>
               <div className="text-sm text-muted mt-1 flex flex-wrap gap-x-3 gap-y-1">
                 <span className="flex items-center gap-1"><Building2 size={14} /> {c.industry}</span>
@@ -58,8 +58,8 @@ export default async function CompanyPage({ params, searchParams }: { params: Pr
         </div>
         <div className="border-t border-line px-2 flex overflow-x-auto">
           {TABS.map((t) => (
-            <Link key={t.key} href={`/company/${c.slug}?tab=${t.key}`} scroll={false} className={`whitespace-nowrap px-3 py-2.5 text-sm font-semibold border-b-2 ${tab === t.key ? "text-action border-action" : "text-muted border-transparent hover:text-ink"}`}>
-              {t.label}{t.key === "tenders" && tenders.length > 0 && <span className="ml-1.5 text-[10px] bg-action text-white rounded-full px-1.5 py-0.5">{tenders.length}</span>}
+            <Link key={t.key} href={`/company/${c.slug}?tab=${t.key}`} scroll={false} className={`relative whitespace-nowrap px-3 py-2.5 text-sm font-semibold transition-colors ${tab === t.key ? "text-ink" : "text-muted hover:text-ink"}`}>
+              {t.label}{t.key === "tenders" && tenders.length > 0 && <span className="ml-1.5 text-[10px] badge-spectrum rounded-full px-1.5 py-0.5">{tenders.length}</span>}{tab === t.key && <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full meter-spectrum" />}
             </Link>
           ))}
         </div>
@@ -84,7 +84,7 @@ export default async function CompanyPage({ params, searchParams }: { params: Pr
               <div className="card p-5">
                 <h2 className="font-semibold text-xl text-ink flex items-center gap-2"><ShieldCheck size={18} className="text-emerald-600" /> Compliance & Certifications</h2>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {c.certifications.map((x) => <span key={x} className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 text-emerald-800 px-2.5 py-1 text-xs font-semibold"><ShieldCheck size={12} /> {x}</span>)}
+                  {c.certifications.map((x) => <span key={x} className="inline-flex items-center gap-1 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 px-2.5 py-1 text-xs font-semibold"><ShieldCheck size={12} /> {x}</span>)}
                   {c.certifications.length === 0 && <p className="text-sm text-muted">No certifications listed.</p>}
                 </div>
               </div>
@@ -111,8 +111,8 @@ export default async function CompanyPage({ params, searchParams }: { params: Pr
                   </div>
                   <p className="text-sm text-ink-70 mt-2">{s.description}</p>
                   <div className="mt-3 grid sm:grid-cols-2 gap-2 text-sm">
-                    <div className="rounded-md bg-canvas p-2.5"><div className="text-xs text-muted">Starting pricing</div><div className="font-semibold">{s.pricingTier ?? "On request"}</div></div>
-                    <div className="rounded-md bg-canvas p-2.5"><div className="text-xs text-muted">Capacity</div><div className="font-semibold">{s.capacity ?? "-"}</div></div>
+                    <div className="rounded-xl bg-canvas p-2.5"><div className="text-xs text-muted">Starting pricing</div><div className="font-semibold">{s.pricingTier ?? "On request"}</div></div>
+                    <div className="rounded-xl bg-canvas p-2.5"><div className="text-xs text-muted">Capacity</div><div className="font-semibold">{s.capacity ?? "-"}</div></div>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-1.5">{s.tags.map((t) => <span key={t} className="text-xs text-action bg-tint rounded px-2 py-0.5 font-medium">#{t}</span>)}</div>
                 </div>
@@ -162,7 +162,7 @@ export default async function CompanyPage({ params, searchParams }: { params: Pr
               {reviews.map((r) => (
                 <div key={r.id} className="card p-5">
                   <div className="flex items-start gap-3">
-                    <Avatar name={r.reviewer.name} src={r.reviewer.logoUrl} size={44} rounded="rounded-md" />
+                    <Avatar name={r.reviewer.name} src={r.reviewer.logoUrl} size={44} rounded="rounded-xl" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <Link href={`/company/${r.reviewer.slug}`} className="font-semibold text-sm hover:underline">{r.reviewer.name}</Link>

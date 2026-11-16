@@ -107,7 +107,7 @@ export function PostCard({ post, loggedIn }: { post: FeedPost; loggedIn: boolean
     <article className="card">
       {/* Author header */}
       <div className="px-4 pt-3 pb-2 flex items-start gap-2">
-        <Link href={`/company/${post.company.slug}`}><Avatar name={post.company.name} src={post.company.logoUrl} size={48} rounded="rounded-md" /></Link>
+        <Link href={`/company/${post.company.slug}`}><Avatar name={post.company.name} src={post.company.logoUrl} size={48} rounded="rounded-xl" /></Link>
         <div className="min-w-0 flex-1 leading-tight">
           <Link href={`/company/${post.company.slug}`} className="font-semibold text-sm text-ink hover:text-action hover:underline inline-flex items-center gap-1">
             {post.company.name}
@@ -230,7 +230,7 @@ export function PostCard({ post, loggedIn }: { post: FeedPost; loggedIn: boolean
         ) : (
           <div className="space-y-3">
             <p className="text-sm text-muted">Tag a vetted business for this need. LinkBiz tracks the loop end-to-end and applies their published referral commission on conversion.</p>
-            <div className="max-h-56 overflow-y-auto divide-y divide-line border border-line rounded-md">
+            <div className="max-h-56 overflow-y-auto divide-y divide-line border border-line rounded-xl">
               {recList.filter((c) => c.id !== post.companyId).map((c) => (
                 <button key={c.id} onClick={() => setRecTarget(c.id)} className={`w-full flex items-center gap-2 px-3 py-2 text-left row-hover ${recTarget === c.id ? "bg-tint" : ""}`}>
                   <Avatar name={c.name} src={c.logoUrl} size={32} rounded="rounded" />
@@ -254,7 +254,7 @@ export function PostCard({ post, loggedIn }: { post: FeedPost; loggedIn: boolean
           </form>
           {comments.map((c) => (
             <div key={c.id} className="flex gap-2">
-              <Link href={`/company/${c.company.slug}`}><Avatar name={c.company.name} src={c.company.logoUrl} size={32} rounded="rounded-md" /></Link>
+              <Link href={`/company/${c.company.slug}`}><Avatar name={c.company.name} src={c.company.logoUrl} size={32} rounded="rounded-xl" /></Link>
               <div className="flex-1 min-w-0">
                 <div className="bg-hover rounded-lg rounded-tl-none px-3 py-2">
                   <div className="flex items-center justify-between gap-2">

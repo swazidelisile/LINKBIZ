@@ -23,7 +23,7 @@ export function AuditView() {
 
   return (
     <div className="space-y-3">
-      <div className="card p-5 bg-gradient-to-r from-tint to-white">
+      <div className="card p-5 bg-gradient-to-br from-tint via-white/60 to-white/30 spectrum-border">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <div className="text-xs font-bold uppercase tracking-wide text-action flex items-center gap-1"><Sparkles size={12} /> Free instant audit - generated on verification</div>
@@ -35,7 +35,7 @@ export function AuditView() {
             <div className="text-xs text-muted">Trust score / 100</div>
           </div>
         </div>
-        <div className="mt-3 h-2 rounded-full bg-hover overflow-hidden"><div className="h-full bg-action rounded-full" style={{ width: `${a.trustScore}%` }} /></div>
+        <div className="mt-3 h-2 rounded-full bg-hover overflow-hidden"><div className="h-full rounded-full meter-spectrum" style={{ width: `${a.trustScore}%` }} /></div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 items-start">

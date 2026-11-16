@@ -38,10 +38,10 @@ export default async function TenderDetailPage({ params }: { params: Promise<{ i
               <div><div className="font-semibold text-sm group-hover:underline flex items-center gap-1">{tender.company.name} {tender.company.verified && <VerifiedBadge size={14} />}</div><div className="text-xs text-muted">{tender.company.industry} · {tender.company.location}</div></div>
             </Link>
             <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-              <div className="rounded-md bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Wallet size={12} /> Budget</div><div className="font-semibold mt-0.5">{money(tender.budgetMin, tender.currency)} – {money(tender.budgetMax, tender.currency)}</div></div>
-              <div className="rounded-md bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><MapPin size={12} /> Region</div><div className="font-semibold mt-0.5">{tender.region}</div></div>
-              <div className="rounded-md bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Tag size={12} /> Category</div><div className="font-semibold mt-0.5">{tender.category}</div></div>
-              <div className="rounded-md bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Users size={12} /> Bids</div><div className="font-semibold mt-0.5">{tender.bidCount} received</div></div>
+              <div className="rounded-xl bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Wallet size={12} /> Budget</div><div className="font-semibold mt-0.5">{money(tender.budgetMin, tender.currency)} – {money(tender.budgetMax, tender.currency)}</div></div>
+              <div className="rounded-xl bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><MapPin size={12} /> Region</div><div className="font-semibold mt-0.5">{tender.region}</div></div>
+              <div className="rounded-xl bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Tag size={12} /> Category</div><div className="font-semibold mt-0.5">{tender.category}</div></div>
+              <div className="rounded-xl bg-canvas p-3"><div className="text-xs text-muted flex items-center gap-1"><Users size={12} /> Bids</div><div className="font-semibold mt-0.5">{tender.bidCount} received</div></div>
             </div>
           </div>
           <div className="card p-5">

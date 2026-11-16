@@ -83,7 +83,7 @@ export function TenderBoard({ initial, initialQuery }: { initial: TenderWithComp
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search tenders by title, scope or keyword…" className="input !pl-9" />
           </div>
-          <button onClick={() => setMobileFilters((m) => !m)} className="btn-ghost md:hidden"><SlidersHorizontal size={14} /> {activeCount > 0 && <span className="bg-action text-white rounded-full text-[10px] px-1.5">{activeCount}</span>}</button>
+          <button onClick={() => setMobileFilters((m) => !m)} className="btn-ghost md:hidden"><SlidersHorizontal size={14} /> {activeCount > 0 && <span className="badge-spectrum rounded-full text-[10px] px-1.5">{activeCount}</span>}</button>
         </div>
         {mobileFilters && <div className="card p-4 md:hidden">{Filters}</div>}
         <div className="flex items-center justify-between px-1">

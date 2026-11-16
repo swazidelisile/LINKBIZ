@@ -20,7 +20,7 @@ export function ToolsView({ company }: { company: Company }) {
       <div className="card px-1 flex overflow-x-auto">
         {([["invoice", "AI Invoice Generator", Receipt], ["card", "QR Business Card", QrCode], ["compliance", "Compliance Reminders", CalendarClock]] as const).map(([k, l, I]) => (
           <button key={k} onClick={() => setTab(k)} className={`relative whitespace-nowrap px-3 py-2.5 text-sm font-semibold inline-flex items-center gap-1.5 ${tab === k ? "text-action" : "text-muted hover:text-ink"}`}>
-            <I size={15} /> {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-action rounded-t" />}
+            <I size={15} /> {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full meter-spectrum" />}
           </button>
         ))}
       </div>
@@ -152,7 +152,7 @@ function CardTool({ company }: { company: Company }) {
   return (
     <div className="grid sm:grid-cols-2 gap-3 items-start">
       <div className="card p-6 text-center">
-        <div className="h-16 -mx-6 -mt-6 mb-4 rounded-t-lg bg-gradient-to-r from-action to-brand-light" />
+        <div className="h-16 -mx-6 -mt-6 mb-4 rounded-t-[17px] cover-gradient" />
         <Avatar name={company.name} src={company.logoUrl} size={72} ring className="mx-auto -mt-12" />
         <h2 className="font-bold text-lg mt-2">{company.name}</h2>
         <p className="text-sm text-muted">{company.tagline}</p>
@@ -166,7 +166,7 @@ function CardTool({ company }: { company: Company }) {
         <p className="text-xs text-muted mt-1">Every scan lands on your verified LinkBiz page with source attribution (?src=qr).</p>
         <div className="mt-3 grid grid-cols-3 gap-2 text-center">
           {[["142", "Scans"], ["61", "Profile views"], ["9", "Inquiries"]].map(([v, l]) => (
-            <div key={l} className="rounded-md bg-hover/60 border border-line p-3"><div className="text-xl font-bold text-action">{v}</div><div className="text-xs text-muted">{l}</div></div>
+            <div key={l} className="rounded-xl bg-hover/60 border border-line p-3"><div className="text-xl font-bold text-action">{v}</div><div className="text-xs text-muted">{l}</div></div>
           ))}
         </div>
         <p className="text-xs text-muted mt-3">Print the QR on proposals, vehicles and site boards - procurement teams scan straight into your capability deck and live capacity status.</p>

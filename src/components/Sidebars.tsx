@@ -14,7 +14,7 @@ export function LeftSidebar({ session, stats }: { session: Session | null; stats
   if (!session || !stats) {
     return (
       <div className="card overflow-hidden">
-        <div className="h-14 bg-gradient-to-r from-action to-brand-light" />
+        <div className="h-20 cover-gradient" />
         <div className="px-3 pb-4 pt-3 text-center">
           <h3 className="font-semibold text-base text-ink">Welcome to LinkBiz</h3>
           <p className="text-xs text-muted mt-1 leading-snug">The B2B network where businesses showcase capabilities and win tenders.</p>
@@ -35,7 +35,7 @@ export function LeftSidebar({ session, stats }: { session: Session | null; stats
     <>
       {/* Identity card */}
       <div className="card overflow-hidden">
-        <div className="h-14 bg-cover bg-center bg-action" style={{ backgroundImage: `url(${c.coverUrl ?? "/covers/default.jpg"})` }} />
+        <div className="h-20 cover-gradient bg-cover bg-center" style={c.coverUrl ? { backgroundImage: `url(${c.coverUrl})` } : undefined} />
         <div className="px-3 pb-3 -mt-9 text-center">
           <Link href={`/company/${c.slug}`} className="inline-block"><Avatar name={c.name} src={c.logoUrl} size={72} ring className="mx-auto" /></Link>
           <Link href={`/company/${c.slug}`} className="block mt-2 font-semibold text-base text-ink hover:underline leading-tight">
@@ -81,7 +81,7 @@ export function LeftSidebar({ session, stats }: { session: Session | null; stats
           <li><Link href="/settings" className="flex items-center gap-2 hover:underline"><Briefcase size={14} /> Manage team &amp; roles</Link></li>
         </ul>
         <div className="hairline mt-3 pt-2.5">
-          <Link href="/network" className="block text-center text-sm font-semibold text-muted rounded-md py-1.5 row-hover">Discover more</Link>
+          <Link href="/network" className="block text-center text-sm font-semibold text-muted rounded-xl py-1.5 row-hover">Discover more</Link>
         </div>
       </div>
     </>
@@ -118,16 +118,16 @@ export function RightSidebar({ tenders, suppliers, loggedIn }: { tenders: Tender
         <div className="divide-y divide-line">
           {suppliers.slice(0, 3).map((s) => <CompanyCard key={s.id} company={s} variant="compact" loggedIn={loggedIn} />)}
         </div>
-        <Link href="/network" className="block text-center text-sm font-semibold text-muted rounded-md py-1.5 mt-1 row-hover">View all recommendations →</Link>
+        <Link href="/network" className="block text-center text-sm font-semibold text-muted rounded-xl py-1.5 mt-1 row-hover">View all recommendations →</Link>
       </div>
 
       {/* Sticky footer / promo card */}
       <div className="sticky top-[76px] space-y-2">
-        <div className="card p-3 text-center">
-          <div className="text-xs text-muted">Grow your business with</div>
-          <div className="font-semibold text-sm text-ink mt-0.5">LinkBiz Premium Business</div>
-          <p className="text-xs text-muted mt-1">Unlimited tender alerts, bid analytics and verified badge priority.</p>
-          <Link href="/signup" className="btn-outline w-full mt-2 !py-1">Try for free</Link>
+        <div className="card promo-card p-4 text-center">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60">Grow your business with</div>
+          <div className="font-semibold text-base text-white mt-1 tracking-[-0.02em]">LinkBiz Premium Business</div>
+          <p className="text-xs text-white/70 mt-1.5 leading-relaxed">Unlimited tender alerts, bid analytics and verified badge priority.</p>
+          <Link href="/signup" className="btn-glass-light w-full mt-3 !py-1">Try for free</Link>
         </div>
         <nav className="flex flex-wrap justify-center gap-x-3 gap-y-1 px-3 text-xs text-muted">
           {["About", "Accessibility", "Help Center", "Privacy & Terms", "Tender Guidelines", "Business Solutions", "More"].map((l) => <span key={l} className="hover:text-action hover:underline cursor-pointer">{l}</span>)}

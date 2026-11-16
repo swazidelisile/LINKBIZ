@@ -68,7 +68,7 @@ export function MicroBoard({ me }: { me: number }) {
       <div className="card px-1 flex">
         {([["open", "Open requests"], ["mine", "My requests & bids"]] as const).map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)} className={`relative px-3 py-2.5 text-sm font-semibold ${tab === k ? "text-action" : "text-muted hover:text-ink"}`}>
-            {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-action rounded-t" />}
+            {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full meter-spectrum" />}
           </button>
         ))}
       </div>
@@ -81,7 +81,7 @@ export function MicroBoard({ me }: { me: number }) {
         return (
           <div key={m.id} className="card p-4">
             <div className="flex items-start gap-3">
-              <Avatar name={m.company.name} src={m.company.logoUrl} size={44} rounded="rounded-md" />
+              <Avatar name={m.company.name} src={m.company.logoUrl} size={44} rounded="rounded-xl" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 flex-wrap text-xs">
                   <Link href={`/company/${m.company.slug}`} className="font-semibold text-ink hover:underline inline-flex items-center gap-1">{m.company.name} {m.company.verified && <VerifiedBadge size={12} />}</Link>
@@ -104,7 +104,7 @@ export function MicroBoard({ me }: { me: number }) {
             </div>
 
             {(mine || m.bids.some((b) => b.company.id === me)) && m.bids.length > 0 && (
-              <div className="mt-3 rounded-md border border-line overflow-hidden">
+              <div className="mt-3 rounded-xl border border-line overflow-hidden">
                 <div className="px-3 py-1.5 bg-hover/60 text-xs font-semibold text-muted">Comparable bids</div>
                 <table className="w-full text-xs">
                   <tbody className="divide-y divide-line">

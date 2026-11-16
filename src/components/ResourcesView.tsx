@@ -80,7 +80,7 @@ export function ResourcesView({ me }: { me: number }) {
       <div className="card px-1 flex overflow-x-auto">
         {([["pods", "Mastermind Pods", Users], ["referrals", "Referral Loops", Megaphone], ["market", "Resource Marketplace", Boxes]] as const).map(([k, l, I]) => (
           <button key={k} onClick={() => setTab(k)} className={`relative whitespace-nowrap px-3 py-2.5 text-sm font-semibold inline-flex items-center gap-1.5 ${tab === k ? "text-action" : "text-muted hover:text-ink"}`}>
-            <I size={15} /> {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-action rounded-t" />}
+            <I size={15} /> {l}{tab === k && <span className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full meter-spectrum" />}
           </button>
         ))}
       </div>
@@ -105,7 +105,7 @@ export function ResourcesView({ me }: { me: number }) {
                 </div>
               </div>
               {openPod === p.id && p.isMember && (
-                <div className="mt-3 rounded-md border border-line">
+                <div className="mt-3 rounded-xl border border-line">
                   <div className="max-h-64 overflow-y-auto p-3 space-y-2.5 bg-hover/40">
                     {p.messages.map((m) => (
                       <div key={m.id} className="flex gap-2">

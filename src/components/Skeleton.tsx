@@ -19,7 +19,7 @@ export function PostSkeleton() {
       <div className="skeleton h-56 w-full rounded-none" />
       <div className="px-4 py-2 flex justify-between"><div className="skeleton h-3 w-20" /><div className="skeleton h-3 w-24" /></div>
       <div className="hairline mx-4" />
-      <div className="px-2 py-1 grid grid-cols-4 gap-1">{[0, 1, 2, 3].map((i) => <div key={i} className="skeleton h-9 rounded-md" />)}</div>
+      <div className="px-2 py-1 grid grid-cols-4 gap-1">{[0, 1, 2, 3].map((i) => <div key={i} className="skeleton h-9 rounded-xl" />)}</div>
     </div>
   );
 }
@@ -51,7 +51,7 @@ export function WidgetSkeleton({ rows = 5 }: { rows?: number }) {
 export function TenderSkeleton() {
   return (
     <div className="card p-4 flex gap-3" aria-hidden>
-      <div className="skeleton h-12 w-12 rounded-md" />
+      <div className="skeleton h-12 w-12 rounded-xl" />
       <div className="flex-1 space-y-2">
         <div className="skeleton h-4 w-3/4" />
         <div className="skeleton h-3 w-32" />

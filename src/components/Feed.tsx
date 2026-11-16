@@ -43,7 +43,7 @@ export function Feed({ posts, loggedIn }: { posts: FeedPost[]; loggedIn: boolean
         {TABS.map((t) => (
           <button key={t.key} onClick={() => select(t.key)} className={`relative whitespace-nowrap px-3 py-2.5 text-sm font-semibold transition-colors ${tab === t.key ? "text-action" : "text-muted hover:text-ink"}`}>
             {t.label}
-            {tab === t.key && <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-action rounded-t" />}
+            {tab === t.key && <span className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full meter-spectrum" />}
           </button>
         ))}
       </div>
@@ -55,7 +55,7 @@ export function Feed({ posts, loggedIn }: { posts: FeedPost[]; loggedIn: boolean
           Sort by: <span className="font-semibold text-ink">{sort === "top" ? "Top" : "Recent"}</span> <ChevronDown size={14} className="text-ink" />
         </button>
         {sortOpen && (
-          <div className="absolute right-0 top-5 z-10 card w-36 py-1 shadow-[0_4px_12px_rgba(0,0,0,0.15)]" onMouseLeave={() => setSortOpen(false)}>
+          <div className="absolute right-0 top-5 z-10 card w-36 py-1 !rounded-[14px] shadow-[0_24px_48px_-20px_rgba(28,28,62,0.35)]" onMouseLeave={() => setSortOpen(false)}>
             {(["top", "recent"] as const).map((s) => (
               <button key={s} onClick={() => { setSort(s); setSortOpen(false); }} className={`w-full text-left px-3 py-1.5 text-sm row-hover ${sort === s ? "font-semibold text-ink border-l-2 border-action" : "text-muted"}`}>{s === "top" ? "Top" : "Recent"}</button>
             ))}

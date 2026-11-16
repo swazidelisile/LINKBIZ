@@ -9,7 +9,7 @@ type Bench = { id: number; metric: string; p25: number; median: number; p75: num
 const SEV: Record<string, { cls: string; icon: typeof Info; label: string }> = {
   critical: { cls: "bg-red-50 text-red-700 border-red-200", icon: AlertTriangle, label: "Act now" },
   watch: { cls: "bg-amber-50 text-amber-700 border-amber-200", icon: Bell, label: "Watch" },
-  info: { cls: "bg-tint text-action border-orange-200", icon: Info, label: "Info" },
+  info: { cls: "bg-tint text-action border-action/20", icon: Info, label: "Info" },
 };
 
 export function IntelligenceView({ industry, region }: { industry: string; region: string }) {
@@ -84,7 +84,7 @@ export function IntelligenceView({ industry, region }: { industry: string; regio
                     <span className="text-xs text-muted">n={b.sampleSize}</span>
                   </div>
                   <div className="relative h-5 mt-1.5 rounded bg-hover overflow-hidden">
-                    <div className="absolute inset-y-0 bg-orange-200/70" style={{ left: pct(b.p25), width: `calc(${pct(b.p75)} - ${pct(b.p25)})` }} />
+                    <div className="absolute inset-y-0 bg-action/15" style={{ left: pct(b.p25), width: `calc(${pct(b.p75)} - ${pct(b.p25)})` }} />
                     <div className="absolute inset-y-0 w-0.5 bg-action" style={{ left: pct(b.median) }} />
                     {b.mine !== null && <div className="absolute top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-ink border-2 border-white" style={{ left: `calc(${pct(b.mine)} - 6px)` }} />}
                   </div>
